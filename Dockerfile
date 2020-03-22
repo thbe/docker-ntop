@@ -20,9 +20,6 @@ LABEL description="Creates an Alpine container serving an NTOP instance"
 ENV LANG en_US.UTF-8
 ENV TERM xterm
 
-# Set workdir (fix missing pid directory)
-WORKDIR /var/lib/ntop
-
 # Install NTOP
 RUN apk add --no-cache curl ntop rrdtool perl
 
