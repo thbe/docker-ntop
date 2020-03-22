@@ -1,22 +1,22 @@
-# ntopng on Docker
+# ntop on Docker
 
-[![Build Status](https://img.shields.io/docker/automated/thbe/ntopng.svg)](https://hub.docker.com/r/thbe/ntopng/builds/) [![GitHub Stars](https://img.shields.io/github/stars/thbe/docker-ntopng.svg)](https://github.com/thbe/docker-ntopng/stargazers) [![Docker Stars](https://img.shields.io/docker/stars/thbe/ntopng.svg)](https://hub.docker.com/r/thbe/ntopng) [![Docker Pulls](https://img.shields.io/docker/pulls/thbe/ntopng.svg)](https://hub.docker.com/r/thbe/ntopng)
+[![Build Status](https://img.shields.io/docker/automated/thbe/ntop.svg)](https://hub.docker.com/r/thbe/ntop/builds/) [![GitHub Stars](https://img.shields.io/github/stars/thbe/docker-ntop.svg)](https://github.com/thbe/docker-ntop/stargazers) [![Docker Stars](https://img.shields.io/docker/stars/thbe/ntop.svg)](https://hub.docker.com/r/thbe/ntop) [![Docker Pulls](https://img.shields.io/docker/pulls/thbe/ntop.svg)](https://hub.docker.com/r/thbe/ntop)
 
-This is a Docker image to run a NTOPNG instance.
+This is a Docker image to run a NTOP instance.
 
 This Docker image is based on the offical [Alpine](https://hub.docker.com/r/_/alpine/) image.
 
 #### Table of Contents
 
-- [Install Docker](https://github.com/thbe/docker-ntopng#install-docker)
-- [Download](https://github.com/thbe/docker-ntopng#download)
-- [How to use this image](https://github.com/thbe/docker-ntopng#how-to-use-this-image)
-- [Next steps](https://github.com/thbe/docker-ntopng#next-steps)
-- [Important notes](https://github.com/thbe/docker-ntopng#important-notes)
-- [Update Docker image](https://github.com/thbe/docker-ntopng#update-docker-image)
-- [Advanced usage](https://github.com/thbe/docker-ntopng#advanced-usage)
-- [Technical details](https://github.com/thbe/docker-ntopng#technical-details)
-- [Development](https://github.com/thbe/docker-ntopng#development)
+- [Install Docker](https://github.com/thbe/docker-ntop#install-docker)
+- [Download](https://github.com/thbe/docker-ntop#download)
+- [How to use this image](https://github.com/thbe/docker-ntop#how-to-use-this-image)
+- [Next steps](https://github.com/thbe/docker-ntop#next-steps)
+- [Important notes](https://github.com/thbe/docker-ntop#important-notes)
+- [Update Docker image](https://github.com/thbe/docker-ntop#update-docker-image)
+- [Advanced usage](https://github.com/thbe/docker-ntop#advanced-usage)
+- [Technical details](https://github.com/thbe/docker-ntop#technical-details)
+- [Development](https://github.com/thbe/docker-ntop#development)
 
 ## Install Docker
 
@@ -24,14 +24,14 @@ To use this image you have to [install Docker](https://docs.docker.com/engine/in
 
 ## Download
 
-You can get the trusted build from the [Docker Hub registry](https://hub.docker.com/r/thbe/ntopng/):
+You can get the trusted build from the [Docker Hub registry](https://hub.docker.com/r/thbe/ntop/):
 
 ```
-docker pull thbe/ntopng
+docker pull thbe/ntop
 ```
 
 Alternatively, you may build the Docker image from the
-[source code](https://github.com/thbe/docker-ntopng#build-from-source-code) on GitHub.
+[source code](https://github.com/thbe/docker-ntop#build-from-source-code) on GitHub.
 
 ## How to use this image
 
@@ -51,27 +51,27 @@ The second argument indicates what interface at the FRITZ box should be monitore
 
 The third argument is the password for the FRITZ box.
 
-#### `NTOPNG_DEBUG`
+#### `NTOP_DEBUG`
 
 If this environment variable is set, the scripts inside the container will run in debug mode.
 
-### Start the NTOPNG instance
+### Start the NTOP instance
 
-The instance can be started by the [start script](https://raw.githubusercontent.com/thbe/docker-ntopng/master/start_ntopng.sh)
+The instance can be started by the [start script](https://raw.githubusercontent.com/thbe/docker-ntop/master/start_ntop.sh)
 from GitHub:
 
 ```
-wget https://raw.githubusercontent.com/thbe/docker-ntopng/master/start_ntopng.sh
-chmod 755 start_ntopng.sh
-./start_ntopng.sh
+wget https://raw.githubusercontent.com/thbe/docker-ntop/master/start_ntop.sh
+chmod 755 start_ntop.sh
+./start_ntop.sh
 ```
 
 If you want to monitor your FRITZ box you have to add the following paramter to the start script:
 
 ```
-wget https://raw.githubusercontent.com/thbe/docker-ntopng/master/start_ntopng.sh
-chmod 755 start_ntopng.sh
-./start_ntopng.sh "true" "lan" "secret"
+wget https://raw.githubusercontent.com/thbe/docker-ntop/master/start_ntop.sh
+chmod 755 start_ntop.sh
+./start_ntop.sh "true" "lan" "secret"
 ```
 
 ### Check server status
@@ -79,7 +79,7 @@ chmod 755 start_ntopng.sh
 You can use the standard Docker commands to examine the status of the NTOPNG instance:
 
 ```
-docker logs --tail 1000 --follow --timestamps ntopng
+docker logs --tail 1000 --follow --timestamps ntop
 ```
 
 ## Next steps
@@ -89,15 +89,15 @@ The next release of this Docker image should have a persistent NTOPNG configurat
 ## Important notes
 
 The username for the web server is `root`/`password` unless you don't change the password with the environment
-variable as described in the [Environment variables](https://github.com/thbe/docker-ntopng#how-to-use-this-image)
+variable as described in the [Environment variables](https://github.com/thbe/docker-ntop#how-to-use-this-image)
 section.
 
 ## Update Docker image
 
-Simply download the trusted build from the [Docker Hub registry](https://hub.docker.com/r/thbe/ntopng/):
+Simply download the trusted build from the [Docker Hub registry](https://hub.docker.com/r/thbe/ntop/):
 
 ```
-docker pull thbe/ntopng
+docker pull thbe/ntop
 ```
 
 ## Advanced usage
@@ -105,12 +105,12 @@ docker pull thbe/ntopng
 ### Build from source code
 
 You can build the image also from source. To do this you have to clone the
-[docker-ntopng](https://github.com/thbe/docker-ntopng) repository from GitHub:
+[docker-ntop](https://github.com/thbe/docker-ntop) repository from GitHub:
 
 ```
-git clone https://github.com/thbe/docker-ntopng.git
-cd docker-ntopng
-docker build --rm --no-cache -t thbe/ntopng .
+git clone https://github.com/thbe/docker-ntop.git
+cd docker-ntop
+docker build --rm --no-cache -t thbe/ntop .
 ```
 
 ### Bash shell inside container
@@ -118,13 +118,13 @@ docker build --rm --no-cache -t thbe/ntopng .
 If you need a shell inside the container you can run the following command:
 
 ```
-docker exec -ti ntopng /bin/sh
+docker exec -ti ntop /bin/sh
 ```
 
 ## Technical details
 
 - Alpine base image
-- ntopng binary from official Alpine package repository
+- ntop binary from official Alpine package repository
 
 ## Development
 
