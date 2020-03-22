@@ -38,9 +38,6 @@ export LC_ALL=C
 export LANG=C
 SCRIPT=$(basename ${0})
 
-### Check prerequisite ###
-if [ ! -f /.dockerenv ]; then RETURN=1; REASON="Not executed inside a Docker container, aborting!"; exit; fi
-
 ### Check if FRITZ box should be monitored ###
 if [ -n "${NTOP_ENV_FRITZBOX_CAPTURE}" ]; then
   FRITZBOX_CAPTURE="true"
