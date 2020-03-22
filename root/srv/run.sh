@@ -92,9 +92,17 @@ FRITZ box interface:  ${FRITZBOX_IFACE}
 
 EOF
 
-### Start NTOPNG instance ###
-chown -R ntop:ntop /var/lib/ntop
-NTOP_COMMAND="/usr/bin/ntop --set-admin-password=admin -u ntop"
+### Create password for NTOP instance ###
+if [ -f /etc/ntop/admin_pw_created.txt ]; then
+  echo "Admin password already created"
+else
+  NTOP_CREATE_PW="/usr/bin/ntop --set-admin-password=admin -u ntop"
+  ${NTOP_CREATE_PW}
+  echo "Admin password created" > /etc/ntop/admin_pw_created.txt
+fi
+
+### Start NTOP instance ###
+NTOP_COMMAND="/usr/bin/ntop -u ntop"
 FRITZBOX_URL="http://${FRITZBOX_IP}/cgi-bin/capture_notimeout?ifaceorminor=${FRITZBOX_IFACE}&snaplen=&capture=Start&sid=${FRITZBOX_SID}"
 if [ ${FRITZBOX_CAPTURE} == "true" ]; then
   wget -qO- ${FRITZBOX_URL} | ${NTOP_COMMAND} -i -
